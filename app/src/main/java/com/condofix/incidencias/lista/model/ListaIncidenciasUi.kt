@@ -6,7 +6,13 @@ enum class FiltroEstado(val etiqueta: String, val estado: Estado?) {
     TODOS("Todos", null),
     PENDIENTES("Pendientes", Estado.PENDIENTE),
     EN_PROCESO("En proceso", Estado.EN_PROCESO),
-    CERRADAS("Cerradas", Estado.CERRADA),
+    CERRADAS("Cerradas", Estado.CERRADA);
+
+    companion object {
+        /** Convierte el texto guardado en DataStore; si falta o no es válido, usa TODOS. */
+        fun desdeNombre(nombre: String?): FiltroEstado =
+            entries.firstOrNull { it.name == nombre } ?: TODOS
+    }
 }
 
 /**

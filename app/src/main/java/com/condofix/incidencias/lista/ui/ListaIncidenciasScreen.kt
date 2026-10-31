@@ -46,7 +46,7 @@ import com.condofix.incidencias.ui.theme.EstadoPendiente
 
 /** Contenedor con estado: conecta el ViewModel con la pantalla sin estado. */
 @Composable
-fun ListaIncidenciasRoute(vm: ListaIncidenciasViewModel = viewModel()) {
+fun ListaIncidenciasRoute(vm: ListaIncidenciasViewModel = viewModel(factory = ListaIncidenciasViewModel.Factory)) {
     val ui by vm.ui.collectAsState()
     ListaIncidenciasScreen(
         ui = ui,
